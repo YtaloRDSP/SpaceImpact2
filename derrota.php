@@ -17,13 +17,12 @@
         <div id="menu">
             <h1>FIM DE JOGO</h1>
             <div id="tabela">
-
                 <?php
                     $nome = [];
                     $pontos = [];
                     $nome = $_GET['nome'];
                     $pontos = (int)$_GET['pontos'];
-                    echo "<table style='border: solid 1px black;'>";
+                    echo "<table style='border: solid 1px black;' align='center'>";
                     echo "<tr><th>Nome</th><th>Pontuação</th></tr>";
 
                     class TableRows extends RecursiveIteratorIterator {
@@ -90,7 +89,9 @@
                     $conn = null;
                 ?>
             </div>
-            <button type="button" onclick="window.location.href = 'index.php'">Reiniciar</button>
+            <div>
+                <button type="button" onclick="window.location.href = 'index.php'">Reiniciar</button>
+            </div>
         </div>        
     </body>
 </html>
