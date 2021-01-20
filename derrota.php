@@ -44,11 +44,12 @@
                         }
                     }
 
-                    mysql://bfd45cf1c2d965:d1836119@us-cdbr-east-03.cleardb.com/heroku_0698144b8223ad7?reconnect=true
-                    $servername = 'us-cdbr-east-03.cleardb.com';
-                    $username = 'bfd45cf1c2d965';
-                    $password = 'd1836119';
-                    $database = 'SpaceImpact';
+                    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+                    $servername = $url["host"];
+                    $username = $url["user"];
+                    $password = $url["pass"];
+                    $database = substr($url["path"], 1);
 
                     try {
 
