@@ -16,7 +16,7 @@
     <body>
         <div id="menu">
             <h1>SPACE IMPACT 2</h1>
-			<form name="Form" action="/action_page.php" method="post">
+			<form name="Form">
 				<h2>Nome: <input type="text" name="nome"></h2>
 			</form>
 			<button type="button" onclick="play()">Jogar</button>
