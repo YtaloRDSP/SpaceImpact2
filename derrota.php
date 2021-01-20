@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="shortcut icon" href="imagens/mosquito.png" type="image/x-icon">
+        <link rel="shortcut icon" href="imagens/nave.png" type="image/x-icon">
         <title>Space Impact 2</title>
         <link rel="stylesheet" href="jogo.css">
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"> 

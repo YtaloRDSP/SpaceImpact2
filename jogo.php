@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Space Impact 2</title>
+        <link rel="shortcut icon" href="imagens/nave.png" type="image/x-icon">
         <link rel="stylesheet" href="jogo.css">
         <script src="jogo.js"></script>
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
