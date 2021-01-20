@@ -11,6 +11,11 @@
                 text-align: center;
                 margin-right: auto;
             }
+            #botao {
+                position: absolute;
+                text-align: center;
+                bottom: 60px;
+            }
         </style>
     </head>
     <body>
@@ -90,7 +95,7 @@
                 ?>
             </div>
             <div>
-                <button type="button" onclick="window.location.href = 'index.php'">Reiniciar</button>
+                <button type="button" onclick="window.location.href = 'index.php'" id="botao">Reiniciar</button>
             </div>
         </div>        
     </body>
