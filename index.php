@@ -11,6 +11,7 @@
         <script>
             function play(){
                 var nome = document.forms["Form"]["nome"].value;
+                window.prompt('Insira um nome')
                 window.location.href = "jogo.php?nome="+nome;
             }            
         </script>
