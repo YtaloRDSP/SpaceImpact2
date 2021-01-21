@@ -91,8 +91,8 @@
                                         <th>".$linha["Nome"]."</th>
                                         <th>".$linha["Pontos"]." </th>
                                     </tr>";
-                                    $n++;
                                 }
+                                $n++;
                             }
                         }             
 
