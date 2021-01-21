@@ -10,6 +10,10 @@
 
         <script>
             var x = "<?php print $_GET['nome']; ?>"
+            if (x == ''){
+                window.alert('Insira um nome')
+                window.location.href = "index.php";
+            }
         </script>
         
     </head>
