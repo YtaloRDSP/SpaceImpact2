@@ -23,8 +23,6 @@
             <p>
                 Setas movimentam <br>
                 Tecla Espaço atira <br>
-                Algum bug ainda não resolvido faz os inimigos demorarem uns 22 segundos para aparecer
-                depois que o jogo inicia.
             </p>
         </div>        
     </body>
