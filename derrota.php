@@ -4,17 +4,16 @@
         <meta charset="UTF-8">
         <link rel="shortcut icon" href="imagens/nave.png" type="image/x-icon">
         <title>Space Impact 2</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="jogo.css">
         <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"> 
         <style>
             #tabela{
                 text-align: center;
-                margin-right: auto;
             }
-            #botao {
-                position: absolute;
-                text-align: center;
-                bottom: 60px;
+            #tabela thead{
+                font-size: 1.5rem;
             }
         </style>
     </head>
@@ -27,26 +26,14 @@
                     $pontos = [];
                     $nome = $_GET['nome'];
                     $pontos = (int)$_GET['pontos'];
-                    echo "<table style='border: solid 1px black;' align='center'>";
-                    echo "<tr><th>Nome</th><th>Pontuação</th></tr>";
-
-                    class TableRows extends RecursiveIteratorIterator {
-                        function __construct($it) {
-                            parent::__construct($it, self::LEAVES_ONLY);
-                        }
-
-                        function current() {
-                            return "<td style='width:150px;border:1px solid black;'>" . parent::current(). "</td>";
-                        }
-
-                        function beginChildren() {
-                            echo "<tr>";
-                        }
-
-                        function endChildren() {
-                            echo "</tr>" . "\n";
-                        }
-                    }
+                    echo "  <table class='table table-sm table-striped table-hover text-light col-4 m-auto'>
+                            <thead class='thead-dark text-uppercase'>
+                                <tr>
+                                    <th scope='col'>#</th>
+                                    <th scope='col'>Nome</th>
+                                    <th scope='col'>Pontos</th>
+                                </tr>
+                            </thead>";
 
                     $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
@@ -80,13 +67,34 @@
                         $stmt->bindParam(':pontos', $pontos);
                         $stmt->execute();
 
-                        $stmt = $conn->prepare("SELECT Nome, Pontos FROM Ranking ORDER BY Pontos DESC LIMIT 10");
+                        $stmt = $conn->prepare("SELECT id FROM Ranking ORDER BY id DESC LIMIT 1");
+                        $stmt->execute();
+                        $result = $stmt->fetch();
+                        $idAtual= $result['id'];
+
+                        $stmt = $conn->prepare("SELECT id, Nome, Pontos FROM Ranking ORDER BY Pontos DESC LIMIT 10");
                         $stmt->execute();
 
-                        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-                        foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-                            echo $v;
-                        }
+                        $result = $stmt->fetchAll();
+                        if($result){
+                            $n = 1;
+                            foreach($result as $linha){
+                                if($idAtual == $linha["id"]){
+                                    echo "<tr class='table-light text-dark'>
+                                        <th>".$n."</th>
+                                        <th>".$linha["Nome"]."</th>
+                                        <th>".$linha["Pontos"]." </th>
+                                    </tr>";
+                                } else{
+                                    echo "<tr>
+                                        <th>".$n."</th>
+                                        <th>".$linha["Nome"]."</th>
+                                        <th>".$linha["Pontos"]." </th>
+                                    </tr>";
+                                    $n++;
+                                }
+                            }
+                        }             
 
                     } catch(PDOException $e) {
                         echo $stmt . '<br>' . $e->getMessage();
@@ -95,7 +103,9 @@
                 ?>
             </div>
             <div>
-                <button type="button" onclick="window.location.href = 'index.php'" id="botao">Reiniciar</button>
+                <?php
+                    echo "<a class='btn btn-secondary fixed-bottom col-2 m-auto mb-5' href='index.php' role='button'>Reiniciar</a>";
+                ?>
             </div>
         </div>        
     </body>
