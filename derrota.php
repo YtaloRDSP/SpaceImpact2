@@ -92,9 +92,6 @@
                                         <th>".$linha["Pontos"]." </th>
                                     </tr>";
                                 }
-                                if($n == 10){
-                                    echo "<a class='btn btn-secondary col-2 m-auto mb-5' href='index.php' role='button'>Reiniciar</a>";
-                                }
                                 $n++;
                             }
                         }             
@@ -103,6 +100,11 @@
                         echo $stmt . '<br>' . $e->getMessage();
                     }
                     $conn = null;
+                ?>
+            </div>
+            <div>
+                <?php
+                    echo "<a class='btn btn-secondary fixed-bottom col-2 m-auto mb-5' href='index.php' role='button'>Reiniciar</a>";
                 ?>
             </div>
         </div>        
