@@ -120,7 +120,7 @@ function atualizarFrame(){
         if(areaJogo.teclas['ArrowLeft'] && jogador.x > 20) jogador.x -= 5;
         if(areaJogo.teclas[' ']){
             if(disparos.length > 0){
-                if(tempo - disparos[disparos.length - 1].tempoDisp > 20){
+                if(tempo - disparos[disparos.length - 1].tempoDisp > 10){
                     disparos.push({
                         x: jogador.x + 38,
                         y: jogador.y + 19,
